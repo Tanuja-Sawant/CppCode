@@ -15,14 +15,14 @@ struct Node
 void levelOrder(Node* node)
 {
    q.push(node);
-   while(q.empty()==false){
+   while(!q.empty()){
        Node *node=q.front();
        cout<<node->data<<" ";
        q.pop();
-       if(node->left!=NULL){
+       if(node->left){
            q.push(node->left);
        }
-       if(node->right!=NULL){
+       if(node->right){
            q.push(node->right);
        }
     }
