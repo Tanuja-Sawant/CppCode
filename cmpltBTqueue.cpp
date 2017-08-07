@@ -14,20 +14,23 @@ bool isCompleteBT(struct node* root)
     if(root==NULL)
         return true;
     q.push(root);
+    int flag=false;
     while(!q.empty()){
        node* temp=q.front();
        q.pop();
-       if(temp->left==NULL){
-           if(temp->right!=NULL){
+       if(temp->left){
+           if(flag==true)
                return false;
-           }
-       }
-       else{
            q.push(temp->left);
        }
+       else
+           flag=true;
        if(temp->right){
+           if(flag==true)
+               return false;
            q.push(temp->right);
-       }
+       }else
+           flag=true;
     }
     return true;
 }
