@@ -1,0 +1,41 @@
+//Given an array, print k largest elements from the array.  The output elements should be printed in decreasing order.
+//https://practice.geeksforgeeks.org/problems/k-largest-elements/0
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+	cin>>t;
+	int n,k;
+	priority_queue <int, vector<int>, greater<int> > pq;
+    
+	
+	for(int i=0;i<t;i++){
+	    cin>>n>>k;
+	    int c[n];
+	    for(int j=0;j<n;j++){
+	        cin>>c[j];
+	    }
+	    for(int l=0;l<k;l++){
+	        pq.push(c[l]);
+	    }
+	    
+	    for(int m=k;m<n;m++){
+	        if(c[m]>pq.top()){
+	            pq.pop();
+	            pq.push(c[m]);
+	        }
+	    }
+	    for(int h=0;h<k;h++){
+	        c[h]=pq.top();
+	        //cout<<pq.top()<<" ";
+	        pq.pop();
+	    }
+	     for(int h=k-1;h>=0;h--){
+	       cout<<c[h]<<" ";
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}
